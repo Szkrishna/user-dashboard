@@ -1,0 +1,11 @@
+.layout-wrapper {
+  display: flex;
+}
+
+.main-content {
+  margin: 20px 60px;
+  width: calc(100% - 120px);
+  min-height: calc(100vh - 120px);
+  padding: 20px;
+  background-color: #fff;
+}
