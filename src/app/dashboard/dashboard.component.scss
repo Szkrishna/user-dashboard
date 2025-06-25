@@ -128,3 +128,17 @@ button {
   cursor: pointer;
   padding: 4px;
 }
+
+
+.graphs {
+  display: flex;
+  gap: 32px; 
+}
+
+.breakdown {
+  flex: 0 0 75%;
+}
+
+.monitored {
+  flex: 0 0 25%;
+}
