@@ -1,12 +1,41 @@
-<div class="topbar">
-    <div>
-        <h2>Welcome back, Olivia</h2>
+<div class="reports">
+    <div class="leftbar">
+        <span>
+            <img src="assets/icon.png" alt="Icon" width="24" height="24" />
+        </span>
+        <span>
+            <lucide-icon class="icon nav-icon" [class.active]="isChartActive" [img]="House"></lucide-icon>
+        </span>
+        <span>
+            <lucide-icon class="icon nav-icon" [class.active]="isChartActive" [img]="ChartColumnIncreasing"></lucide-icon>
+        </span>
+        <span>
+            <lucide-icon class="icon nav-icon" [class.active]="isChartActive" [img]="Layers"></lucide-icon>
+        </span>
+        <span>
+            <lucide-icon class="icon nav-icon" [class.active]="isChartActive" [img]="CopyCheck"></lucide-icon>
+        </span>
+        <span>
+            <lucide-icon class="icon nav-icon" [class.active]="isChartActive" [img]="ChartPie"></lucide-icon>
+        </span>
+        <span>
+            <lucide-icon class="icon nav-icon" [class.active]="isChartActive" [img]="Users"></lucide-icon>
+        </span>
     </div>
-    <div class="dashboard-toolbar">
-        <div class="icon-div">
-            <lucide-icon class="icon" [img]="Search"></lucide-icon>
+
+    <div class="rightbar">
+        <div class="topbar">
+            <div class="welcome">
+                <h2>Welcome back, Olivia</h2>
+            </div>
+
+            <div class="dashboard-toolbar">
+                <div class="search-div">
+                    <lucide-icon class="icon search-icon" [img]="Search"></lucide-icon>
+                </div>
+                <button><lucide-icon class="icon" [img]="Settings2"></lucide-icon>Customize</button>
+                <button><lucide-icon class="icon" [img]="CloudDownload"></lucide-icon>Export</button>
+            </div>
         </div>
-        <button><lucide-icon class="icon" [img]="Settings2"></lucide-icon>Customize</button>
-        <button><lucide-icon class="icon" [img]="CloudDownload"></lucide-icon>Export</button>
     </div>
 </div>

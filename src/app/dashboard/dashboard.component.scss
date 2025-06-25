@@ -1,6 +1,44 @@
+.reports {
+  display: flex;
+  flex-direction: row; 
+  gap: 20px;
+}
+
+.leftbar {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  gap: 8px;
+  height: auto; 
+  width: auto;
+}
+
+::ng-deep lucide-icon svg.nav-icon {
+  transition: stroke 0.2s ease-in-out;
+  padding: 8px;
+  border-radius: 4px; 
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f5f6f7;
+  }
+
+  &:active {
+    background-color: #f5f6f7;
+  }
+}
+
+.rightbar {
+  flex: 3; 
+  background-color: #fff;
+}
+
+
 .topbar {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .dashboard-toolbar {
@@ -11,11 +49,21 @@
 }
 
 ::ng-deep lucide-icon svg.icon {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   stroke: #1f2937;
   vertical-align: middle;
   transition: stroke 0.2s ease-in-out;
+}
+
+::ng-deep lucide-icon svg.search-icon {
+  padding: 8px;
+  border-radius: 8px; 
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f5f6f7;
+  }
 }
 
 button {
@@ -46,8 +94,7 @@ button {
   }
 }
 
-
-.icon-div {
+.search-div {
   cursor: pointer;
   padding: 4px;
 }
