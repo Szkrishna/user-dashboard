@@ -8,9 +8,11 @@ import {
   CopyCheck, 
   ChartPie, 
   Users, 
-  Search, 
+  Search,
+  Box, 
   Settings2, 
-  CloudDownload
+  CloudDownload,
+  EllipsisVertical
 } from 'lucide-angular';
 
 
@@ -28,7 +30,9 @@ export class DashboardComponent {
   readonly ChartPie = ChartPie;
   readonly Users = Users;
   readonly Search = Search;
+  readonly Box = Box;
   readonly Settings2 = Settings2;
   readonly CloudDownload = CloudDownload;
+  readonly EllipsisVertical = EllipsisVertical;
   public isChartActive: boolean = true;
 }

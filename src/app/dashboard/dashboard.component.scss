@@ -1,7 +1,8 @@
-.reports {
+.container {
   display: flex;
   flex-direction: row; 
   gap: 20px;
+  max-width: 1360px;
 }
 
 .leftbar {
@@ -23,6 +24,7 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
   display: inline-block;
   overflow: hidden;
+  margin-bottom: 4px;
 
   img {
     display: block;
@@ -43,8 +45,18 @@
 }
 
 
+.dashboard-toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 16px 0px;
+}
 
-::ng-deep lucide-icon svg.nav-icon {
+::ng-deep lucide-icon svg.icon {
+  width: 40px;
+  height: 40px;
+  stroke: #666;
+  vertical-align: middle;
   transition: stroke 0.2s ease-in-out;
   padding: 8px;
   border-radius: 8px; 
@@ -52,38 +64,35 @@
 
   &:hover {
     background-color: #f5f6f7;
+    stroke: #222;
   }
 
   &:active {
     background-color: #f5f6f7;
+    stroke: #222;
   }
 }
 
-.rightbar {
-  flex: 3; 
-  background-color: #fff;
+::ng-deep lucide-icon svg.btn-icon {
+  width: 24px;
+  height: 24px;
+  padding: 0px;
 }
 
-
-.topbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.dashboard-toolbar {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  padding: 20px;
-}
-
-::ng-deep lucide-icon svg.icon {
-  width: 20px;
-  height: 20px;
-  stroke: #1f2937;
-  vertical-align: middle;
+::ng-deep lucide-icon svg.nav-icon {
   transition: stroke 0.2s ease-in-out;
+  padding: 8px;
+  border-radius: 8px; 
+  margin-bottom: 4px;
+}
+
+::ng-deep lucide-icon svg.ellipse {
+  transition: stroke 0.2s ease-in-out;
+  padding: 0px;
+  border-radius: 8px; 
+  width: 24px;
+  height: 24px;
+  stroke: #999 !important;
 }
 
 ::ng-deep lucide-icon svg.search-icon {
@@ -93,35 +102,19 @@
 
   &:hover {
     background-color: #f5f6f7;
+    stroke: #222;
   }
 }
 
-button {
-  display: inline-flex;
-  align-items: center;
-  background-color: inherit;
-  color: #1f2937;
-  padding: 8px 12px;
-  border: 1px solid #e1e1e1;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 13px;
-  gap: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06); 
 
-  &:hover {
-    background-color: #f5f6f7;
-    border-color: #cbd5e1; 
-    box-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.06), 
-      0 2px 4px rgba(0, 0, 0, 0.08);
+.rightbar {
+  flex: 3; 
+  background-color: #fff;
+}
 
-    .icon {
-      stroke: #1d4ed8;
-    }
-  }
+
+.topbar {
+  width: auto;
 }
 
 .search-div {
@@ -129,16 +122,37 @@ button {
   padding: 4px;
 }
 
-
 .graphs {
-  display: flex;
-  gap: 32px; 
+  width: auto;
 }
 
 .breakdown {
-  flex: 0 0 75%;
+  flex: 0 68%;
+}
+
+.box {
+  padding: 4px;
+  border-radius: 50%;
+  background-color: #010101;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 66px;
+  height: 66px;
+}
+
+::ng-deep lucide-icon.box-icon svg {
+  width: 64px;
+  height: 64px;
+  stroke: #ffffff;
+}
+
+.chart-title {
+  display: flex;
+  justify-content: start;
+  gap: 8px;
 }
 
 .monitored {
-  flex: 0 0 25%;
+  flex: 0 0 30%;
 }
