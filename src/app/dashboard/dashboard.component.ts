@@ -1,14 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import * as Highcharts from 'highcharts';
 import {
   LucideAngularModule, House, ChartColumnIncreasing, Layers, CopyCheck, ChartPie, Users,
   Search, Box, Settings2, CloudDownload, EllipsisVertical, Zap
-} from 'lucide-angular';
+} from 'lucide-angular'
+import * as Highcharts from 'highcharts';
+import { ApexChart, ApexFill, ApexStroke, ApexNonAxisChartSeries, NgApexchartsModule } from 'ng-apexcharts';
+
+export type RadialChartOptions = {
+  series: ApexNonAxisChartSeries;
+  chart: ApexChart;
+  fill: ApexFill;
+  stroke: ApexStroke;
+  labels: string[];
+  plotOptions: ApexPlotOptions;
+};
 
 @Component({
   standalone: true,
-  imports: [CommonModule, LucideAngularModule],
+  imports: [CommonModule, LucideAngularModule, NgApexchartsModule],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
@@ -25,12 +35,12 @@ export class DashboardComponent implements OnInit {
   readonly CloudDownload = CloudDownload;
   readonly EllipsisVertical = EllipsisVertical;
   readonly Zap = Zap;
+  public radialChartOptions!: RadialChartOptions;
 
-  public isChartActive: boolean = true;
 
   ngOnInit() {
     this.plotHeightChart();
-    this.callRadialChart();
+    this.plotRadialChart();
   }
 
   private plotHeightChart() {
@@ -49,18 +59,22 @@ export class DashboardComponent implements OnInit {
         enabled: false
       },
       xAxis: {
+        lineColor: '#ececec',
         title: {
           text: 'Months',
+          margin: 16,
           style: {
-            fontSize: '14px'
+            fontSize: '14px',
           }
         },
         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
       },
       yAxis: {
         min: 0,
+        tickInterval: 20,
         title: {
           text: 'Security Rating',
+          margin: 32,
           style: {
             fontSize: '14px'
           }
@@ -73,6 +87,7 @@ export class DashboardComponent implements OnInit {
         column: {
           borderRadius: 8,
           stacking: 'normal',
+          pointWidth: 32,
           dataLabels: {
             enabled: false
           }
@@ -97,74 +112,57 @@ export class DashboardComponent implements OnInit {
       ]
     };
 
-    Highcharts.chart('container', chartOptions);
+    Highcharts.chart('column-container', chartOptions);
   }
 
 
-  callRadialChart() {
-    const chartOptions: Highcharts.Options = {
+  private plotRadialChart() {
+    this.radialChartOptions = {
+      series: [240],
       chart: {
-        type: 'solidgauge',
-        height: '110%',
+        type: 'radialBar',
+        height: 300,
+        id: 'radialChart'
       },
-
-      title: {
-        text: 'Completion',
-        style: {
-          fontSize: '20px'
-        }
-      },
-
-      tooltip: {
-        enabled: false
-      },
-
-      pane: {
-        startAngle: -90,
-        endAngle: 90,
-        background: [{
-          outerRadius: '100%',
-          innerRadius: '60%',
-          shape: 'arc',
-          borderWidth: 0,
-          backgroundColor: '#f0f0f0'
-        }]
-      },
-
-      yAxis: {
-        min: 0,
-        max: 100,
-        stops: [
-          [0.1, '#f44336'], // red
-          [0.5, '#ffeb3b'], // yellow
-          [0.9, '#4caf50']  // green
-        ],
-        lineWidth: 0,
-        tickPositions: []
-      },
-
       plotOptions: {
-        solidgauge: {
+        radialBar: {
+          startAngle: -90,
+          endAngle: 90,
+          hollow: {
+            margin: 0,
+            size: '70%'
+          },
           dataLabels: {
-            y: -20,
-            borderWidth: 0,
-            useHTML: true,
-            format: '<div style="text-align:center"><span style="font-size:24px">{y}%</span></div>'
+            show: true,
+            name: {
+              show: false
+            },
+            value: {
+              show: true,
+              fontSize: '24px',
+              fontWeight: 600,
+              offsetY: 5,
+              color: '#6343c1',
+              formatter: function (val: number) {
+                return `${val}`;
+              }
+            }
+          },
+          track: {
+            margin: 0,
+            background: '#f0f0f0',
+            strokeWidth: '100%',
           }
         }
       },
-
-      credits: {
-        enabled: false
+      fill: {
+        colors: ['#6343c1'],
+        type: 'solid'
       },
-
-      // series: [{
-      //   name: 'Completion',
-      //   data: [75], // Change this value dynamically
-      //   dataLabels: {
-      //     format: '<div style="text-align:center"><span style="font-size:24px">{y}%</span></div>'
-      //   }
-      // }]
+      stroke: {
+        lineCap: 'round'
+      },
+      labels: ['Vendors monitored']
     };
   }
 

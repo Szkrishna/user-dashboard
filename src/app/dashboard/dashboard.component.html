@@ -34,8 +34,10 @@
                     <div class="cursor-pointer">
                         <lucide-icon class="icon search-icon" [img]="Search"></lucide-icon>
                     </div>
-                    <button class="btn"><lucide-icon class="icon btn-icon" [img]="Settings2"></lucide-icon>Customize</button>
-                    <button class="btn"><lucide-icon class="icon btn-icon" [img]="CloudDownload"></lucide-icon>Export</button>
+                    <button class="btn"><lucide-icon class="icon btn-icon"
+                            [img]="Settings2"></lucide-icon>Customize</button>
+                    <button class="btn"><lucide-icon class="icon btn-icon"
+                            [img]="CloudDownload"></lucide-icon>Export</button>
                 </div>
             </div>
         </div>
@@ -62,8 +64,17 @@
                             </div>
                         </div>
 
-                        <div class="card-body">
-                            <div id="container" style="width: 100%; height: 300px; margin-top: 20px;"></div>
+                        <div class="card-body pb-2 pt-2">
+                            <div id="column-container" class="bar-container"></div>
+
+                            <!-- <div id="barChart">
+                                <apx-chart *ngIf="barChartOptions" [id]="'barChart'" [series]="barChartOptions.series"
+                                    [chart]="barChartOptions.chart" [xaxis]="barChartOptions.xaxis"
+                                    [yaxis]="barChartOptions.yaxis" [plotOptions]="barChartOptions.plotOptions"
+                                    [dataLabels]="barChartOptions.dataLabels" [colors]="barChartOptions.colors"
+                                    [title]="barChartOptions.title">
+                                </apx-chart>
+                            </div> -->
                         </div>
 
                         <div class="card-footer text-end">
@@ -88,13 +99,29 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="card-body" >
-                            <div id="radial-container" style="width: 100%; height: 300px; margin-top: 20px;"></div>
+
+                        <div class="card-body p-0">
+                            <div class="radial-container">
+                                <apx-chart [series]="radialChartOptions.series" [chart]="radialChartOptions.chart"
+                                    [plotOptions]="radialChartOptions.plotOptions" [labels]="radialChartOptions.labels"
+                                    [fill]="radialChartOptions.fill" [stroke]="radialChartOptions.stroke">
+                                </apx-chart>
+                            </div>
+                            <div class="pl-6 pe-6 mb-4">
+                                <h5>
+                                    You've almost reached your limit
+                                </h5>
+                                <p>
+                                    You have used 80% of your available spots.<br/>
+                                    Upgrade plan to monitor more vendors.
+                                </p>
+                            </div>
                         </div>
 
                         <div class="card-footer">
-                            <button class="btn"><lucide-icon class="icon btn-icon" [img]="Zap"></lucide-icon>Upgrade plan</button>
+                            <button class="btn"><lucide-icon class="icon btn-icon" [img]="Zap"></lucide-icon>
+                                Upgrade plan
+                            </button>
                         </div>
                     </div>
                 </div>
