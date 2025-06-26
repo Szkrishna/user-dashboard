@@ -29,63 +29,77 @@ export class DashboardComponent implements OnInit {
   public isChartActive: boolean = true;
 
   ngOnInit() {
-    this.callHeightChart();
+    this.plotHeightChart();
     this.callRadialChart();
   }
 
-  callHeightChart() {
+  private plotHeightChart() {
     const chartOptions: Highcharts.Options = {
+      colors: ['#ebecf0', '#9979e5', '#6343c1'],
       chart: {
         type: 'column'
       },
       title: {
-        text: 'Major trophies for some English teams',
-        align: 'left'
+        text: ''
+      },
+      credits: {
+        enabled: false
+      },
+      legend: {
+        enabled: false
       },
       xAxis: {
-        categories: ['Arsenal', 'Chelsea', 'Liverpool', 'Manchester United']
+        title: {
+          text: 'Months',
+          style: {
+            fontSize: '14px'
+          }
+        },
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
       },
       yAxis: {
         min: 0,
         title: {
-          text: 'Count trophies'
+          text: 'Security Rating',
+          style: {
+            fontSize: '14px'
+          }
         },
         stackLabels: {
-          enabled: true
+          enabled: false
         }
-      },
-      legend: {
-        align: 'left',
-        x: 70,
-        verticalAlign: 'top',
-        y: 70,
-        floating: true,
-        backgroundColor: '#ffffff',
-        borderColor: '#cccccc',
-        borderWidth: 1,
-        shadow: false
-      },
-      tooltip: {
-        headerFormat: '<b>{point.category}</b><br/>',
-        pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
       },
       plotOptions: {
         column: {
+          borderRadius: 8,
           stacking: 'normal',
           dataLabels: {
-            enabled: true
+            enabled: false
           }
         }
       },
       series: [
-        { name: 'BPL', data: [3, 5, 1, 13], type: 'column' },
-        { name: 'FA Cup', data: [14, 8, 8, 12], type: 'column' },
-        { name: 'CL', data: [0, 2, 6, 3], type: 'column' }
+        {
+          name: 'Low',
+          data: [15, 20, 10, 25, 20, 15, 8, 30, 12, 18, 22, 10],
+          type: 'column'
+        },
+        {
+          name: 'Medium',
+          data: [20, 25, 30, 35, 28, 22, 25, 30, 26, 24, 30, 25],
+          type: 'column'
+        },
+        {
+          name: 'High',
+          data: [18, 30, 25, 20, 22, 20, 15, 25, 20, 25, 30, 20],
+          type: 'column'
+        }
       ]
     };
 
     Highcharts.chart('container', chartOptions);
   }
+
 
   callRadialChart() {
     const chartOptions: Highcharts.Options = {
