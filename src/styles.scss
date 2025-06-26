@@ -149,6 +149,12 @@ p {
   text-align: center;
 }
 
+.text-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
 .align-top {
   align-self: start;
 }
