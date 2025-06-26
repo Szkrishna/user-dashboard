@@ -1,11 +1,10 @@
-.layout-wrapper {
-  display: flex;
-}
+// .layout-wrapper {
+//   // display: block;
+// }
 
 .main-content {
-  margin: 20px 60px;
-  width: calc(100% - 120px);
+  padding: 60px;
+  // width: calc(100% - 120px);
   min-height: calc(100vh - 120px);
-  padding: 20px;
   background-color: #fff;
 }
