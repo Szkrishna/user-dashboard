@@ -165,6 +165,4 @@ export class DashboardComponent implements OnInit {
       labels: ['Vendors monitored']
     };
   }
-
-
 }

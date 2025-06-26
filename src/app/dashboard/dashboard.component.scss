@@ -44,7 +44,6 @@
   }
 }
 
-
 .dashboard-toolbar {
   display: flex;
   gap: 12px;
@@ -53,8 +52,8 @@
 }
 
 ::ng-deep lucide-icon svg.icon {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   stroke: #666;
   vertical-align: middle;
   transition: stroke 0.2s ease-in-out;
@@ -96,7 +95,7 @@
 }
 
 ::ng-deep lucide-icon svg.search-icon {
-  padding: 8px;
+  padding: 6px;
   border-radius: 8px; 
   cursor: pointer;
 
@@ -136,13 +135,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
+  width: 54px;
+  height: 54px;
 }
 
 ::ng-deep lucide-icon.box-icon svg {
-  width: 64px;
-  height: 64px;
+  margin-top: 5px;
+  width: 54px;
+  height: 54px;
+  padding: 6px;
   stroke: #ffffff;
 }
 
