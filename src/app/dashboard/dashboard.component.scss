@@ -277,3 +277,18 @@
   padding: 3px;
   stroke: #ffffff;
 }
+
+.table-left {
+  display: flex;
+  justify-content: start;
+  gap: 8px;
+}
+
+.table-badge {
+  color: #7957d0;
+  padding: 4px 6px;
+  border: 0.5px solid #7957d0;
+  border-radius: 16px;
+  background-color: #ddd4f5;
+  margin: 12px 0px;
+}
