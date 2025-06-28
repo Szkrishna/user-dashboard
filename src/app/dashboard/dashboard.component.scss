@@ -242,3 +242,38 @@
   padding: 8px;
   padding-right: 4px;
 }
+
+.table-nav {
+  margin-top: 106px;
+}
+
+.table-card {
+  height: 150vh;
+}
+
+.user-icon {
+  width: 40px;
+   height: 40px;
+}
+
+.box2 {
+  padding: 4px;
+  border-radius: 50%;
+  background-color: #010101;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: 8px;
+  right: 8px;
+}
+
+::ng-deep lucide-icon.box-icon2 svg {
+  margin-top: 6px;
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  stroke: #ffffff;
+}
