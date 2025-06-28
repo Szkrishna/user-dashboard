@@ -229,7 +229,11 @@
 
 .radial-below-text {
   position: relative;
-  top: -100px;
+  top: -104px;
+
+  p {
+    font-size: 0.9rem;
+  }
 }
 
 ::ng-deep lucide-icon svg.trending-icon {
