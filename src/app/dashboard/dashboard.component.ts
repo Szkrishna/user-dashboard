@@ -121,7 +121,7 @@ export class DashboardComponent implements OnInit {
       series: [240],
       chart: {
         type: 'radialBar',
-        height: 300,
+        height: 335,
         id: 'radialChart'
       },
       plotOptions: {
@@ -139,9 +139,9 @@ export class DashboardComponent implements OnInit {
             },
             value: {
               show: true,
-              fontSize: '24px',
+              fontSize: '48px',
               fontWeight: 600,
-              offsetY: 5,
+              offsetY: -10,
               color: '#6343c1',
               formatter: function (val: number) {
                 return `${val}`;
