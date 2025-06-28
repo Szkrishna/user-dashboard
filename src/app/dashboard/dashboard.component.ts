@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   LucideAngularModule, House, ChartColumnIncreasing, Layers, CopyCheck, ChartPie, Users,
-  Search, Box, Settings2, CloudDownload, EllipsisVertical, Zap
+  Search, Box, Settings2, CloudDownload, EllipsisVertical, Zap,TrendingUp
 } from 'lucide-angular'
 import * as Highcharts from 'highcharts';
 import { ApexChart, ApexFill, ApexStroke, ApexNonAxisChartSeries, NgApexchartsModule } from 'ng-apexcharts';
@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit {
   readonly CloudDownload = CloudDownload;
   readonly EllipsisVertical = EllipsisVertical;
   readonly Zap = Zap;
+  readonly TrendingUp = TrendingUp;
   public radialChartOptions!: RadialChartOptions;
 
 
