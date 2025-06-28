@@ -2,19 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   LucideAngularModule, House, ChartColumnIncreasing, Layers, CopyCheck, ChartPie, Users,
-  Search, Box, Settings2, CloudDownload, EllipsisVertical, Zap,TrendingUp
-} from 'lucide-angular'
+  Search, Box, Settings2, CloudDownload, EllipsisVertical, Zap, TrendingUp
+} from 'lucide-angular';
 import * as Highcharts from 'highcharts';
-import { ApexChart, ApexFill, ApexStroke, ApexNonAxisChartSeries, NgApexchartsModule } from 'ng-apexcharts';
+import {
+  ApexNonAxisChartSeries,
+  ApexChart,
+  ApexFill,
+  ApexStroke,
+  ApexPlotOptions,
+  NgApexchartsModule
+} from 'ng-apexcharts';
 
+// Define Apex radial type
 export type RadialChartOptions = {
   series: ApexNonAxisChartSeries;
   chart: ApexChart;
   fill: ApexFill;
   stroke: ApexStroke;
-  labels: string[];
   plotOptions: ApexPlotOptions;
+  labels: string[];
 };
+
 
 @Component({
   standalone: true,
@@ -36,7 +45,7 @@ export class DashboardComponent implements OnInit {
   readonly EllipsisVertical = EllipsisVertical;
   readonly Zap = Zap;
   readonly TrendingUp = TrendingUp;
-  public radialChartOptions!: RadialChartOptions;
+  public radialChartOptions: Partial<RadialChartOptions> | null = null;
 
 
   ngOnInit() {
@@ -117,12 +126,67 @@ export class DashboardComponent implements OnInit {
   }
 
 
+  // private plotRadialChart() {
+  //   this.radialChartOptions = {
+  //     series: [240],
+  //     chart: {
+  //       type: 'radialBar',
+  //       height: 335,
+  //       id: 'radialChart'
+  //     },
+  //     plotOptions: {
+  //       radialBar: {
+  //         startAngle: -90,
+  //         endAngle: 90,
+  //         hollow: {
+  //           margin: 0,
+  //           size: '70%'
+  //         },
+  //         dataLabels: {
+  //           show: true,
+  //           name: {
+  //             show: false
+  //           },
+  //           value: {
+  //             show: true,
+  //             fontSize: '48px',
+  //             fontWeight: 600,
+  //             offsetY: -10,
+  //             color: '#6343c1',
+  //             formatter: function (val: number) {
+  //               return `${val}`;
+  //             }
+  //           }
+  //         },
+  //         track: {
+  //           margin: 0,
+  //           background: '#f0f0f0',
+  //           strokeWidth: '10%',
+  //         }
+  //       }
+  //     },
+  //     fill: {
+  //       colors: ['#6343c1'],
+  //       type: 'solid',
+  //     },
+  //     stroke: {
+  //       lineCap: 'round'
+  //     },
+  //     labels: ['Vendors monitored']
+  //   };
+  // }
+
+
   private plotRadialChart() {
+    const actual = 240;
+    const total = 300;
+    const percentage = (actual / total) * 100;
+
     this.radialChartOptions = {
-      series: [240],
+      series: [percentage],
       chart: {
         type: 'radialBar',
-        height: 335,
+        height: 300,
         id: 'radialChart'
       },
       plotOptions: {
@@ -131,7 +195,7 @@ export class DashboardComponent implements OnInit {
           endAngle: 90,
           hollow: {
             margin: 0,
-            size: '70%'
+            size: '68%'
           },
           dataLabels: {
             show: true,
@@ -140,12 +204,12 @@ export class DashboardComponent implements OnInit {
             },
             value: {
               show: true,
-              fontSize: '48px',
+              fontSize: '32px',
               fontWeight: 600,
               offsetY: -10,
               color: '#6343c1',
-              formatter: function (val: number) {
-                return `${val}`;
+              formatter: function () {
+                return `${actual}`;
               }
             }
           },
@@ -158,12 +222,12 @@ export class DashboardComponent implements OnInit {
       },
       fill: {
         colors: ['#6343c1'],
-        type: 'solid'
+        type: 'solid',
       },
       stroke: {
         lineCap: 'round'
       },
-      labels: ['Vendors monitored']
+      labels: ['Vendors Monitored']
     };
   }
 }

@@ -8,26 +8,18 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent),
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
       },
       {
-        path: '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full'
+        path: 'dashboard',
+        loadComponent: () =>
+          import('./dashboard/dashboard.component').then(m => m.DashboardComponent),
       },
-      { path: '**', 
-        redirectTo: '' 
-      }
-    ]
-  }
+      {
+        path: '**',
+        redirectTo: 'dashboard',
+      },
+    ],
+  },
 ];
-
-
-// import { Routes } from '@angular/router';
-
-// export const routes: Routes = [
-//   {
-//     path: '',
-//     loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent)
-//   }
-// ];
