@@ -254,8 +254,7 @@
 
                                             <span *ngSwitchCase="'tags'">
                                                 <ng-container *ngFor="let tag of row[col.column_key]">
-                                                    <span class="badge me-1" [style.color]="tag.text_color"
-                                                        [style.backgroundColor]="tag.background_color">
+                                                    <span class="badge me-1"[ngClass]="getTagClass(tag)">
                                                         {{ tag.value }}
                                                     </span>
                                                 </ng-container>

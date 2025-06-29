@@ -275,4 +275,10 @@ export class DashboardComponent implements OnInit {
     this.selectedUser = null;
     this.closeModal();
   }
+
+  getTagClass(tag: any): string {
+    const text = tag.value.toLowerCase().replace(/\s+/g, '-');
+    return `tag-${text}`;
+  }
+
 }

@@ -416,3 +416,33 @@
   height: 120px; 
   margin: 0 auto;
 }
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 16px;
+}
+
+
+.tag-design {
+  background-color: #fce4ec;
+  color: #d81b60;
+  border: 1px solid #d81b60;
+}
+
+.tag-testing {
+  background-color: #e8eaf6;
+  color: #3949ab;
+  border: 1px solid #3949ab;
+}
+
+.tag-marketing {
+  background-color: #fff3e0;
+  color: #ef6c00;
+  border: 1px solid #ef6c00;
+}
+
+.tag-product {
+  background-color: #e0f2f1;
+  color: #00796b;
+  border: 1px solid #00796b;
+}
