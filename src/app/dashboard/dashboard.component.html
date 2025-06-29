@@ -37,9 +37,12 @@
                         </div>
 
                         <button class="btn"><lucide-icon class="icon btn-icon"
-                                [img]="Settings2"></lucide-icon>Customize</button>
+                            [img]="Settings2"></lucide-icon>Customize
+                        </button>
+
                         <button class="btn"><lucide-icon class="icon btn-icon"
-                                [img]="CloudDownload"></lucide-icon>Export</button>
+                            [img]="CloudDownload"></lucide-icon>Export
+                        </button>
                     </div>
                 </div>
             </div>
@@ -47,8 +50,8 @@
             <div class="graphs">
                 <div class="raw">
                     <div class="breakdown">
-                        <div class="card">
-                            <div class="card-header">
+                        <div class="custom-card">
+                            <div class="custom-card-header">
                                 <div class="raw">
                                     <div class="chart-title">
                                         <div class="box mr-2">
@@ -66,7 +69,7 @@
                                 </div>
                             </div>
 
-                            <div class="card-body pb-2 pt-2">
+                            <div class="custom-card-body pb-2 pt-2">
                                 <div id="column-container" class="bar-container"></div>
 
                                 <!-- <div id="barChart">
@@ -79,15 +82,15 @@
                                 </div> -->
                             </div>
 
-                            <div class="card-footer text-end">
+                            <div class="custom-card-footer text-end">
                                 <button class="btn">View full report</button>
                             </div>
                         </div>
                     </div>
 
                     <div class="monitored">
-                        <div class="card">
-                            <div class="card-header">
+                        <div class="custom-card">
+                            <div class="custom-card-header">
                                 <div class="raw">
                                     <div class="chart-title">
                                         <div>
@@ -102,8 +105,8 @@
                                 </div>
                             </div>
 
-                            <div class="card-body radial-card-body p-0 ">
-                                <div class="radial-card">
+                            <div class="custom-card-body radial-custom-card-body p-0 ">
+                                <div class="radial-custom-card">
                                     <div class="radial-container">
                                         <apx-chart *ngIf="radialChartOptions" [series]="radialChartOptions.series!"
                                             [chart]="radialChartOptions.chart!"
@@ -133,7 +136,7 @@
                                 </div>
                             </div>
 
-                            <div class="card-footer text-end">
+                            <div class="custom-card-footer text-end">
                                 <button class="btn">
                                     <lucide-icon class="icon btn-icon" [img]="Zap"></lucide-icon>
                                     Upgrade plan
@@ -166,8 +169,8 @@
         </div>
 
         <div class="rightbar">
-            <div class="card table-card">
-                <div class="card-header">
+            <div class="custom-card table-custom-card">
+                <div class="custom-card-header">
                     <div class="raw">
                         <div class="chart-title">
                             <div class="table-left">
@@ -182,9 +185,9 @@
                     </div>
                 </div>
 
-                <div class="card-body p-0">
-                    <div class="table-responsive table-card">
-                        <table class="table table-nowrap mb-0 custom-table">
+                <div class="custom-card-body p-0">
+                    <div class="table-responsive">
+                        <table class="mb-0 custom-table">
                             <thead class="table-light">
                                 <tr>
                                     <th scope="col" class="pr-0">
@@ -248,13 +251,18 @@
                                                 {{ row[col.column_key] }}
                                             </span>
 
-                                            <span *ngSwitchCase="'progress'">
-                                                {{ row[col.column_key] }}%
+                                            <span *ngSwitchCase="'progress'" class="progress-wrapper">
+                                                <div class="progress-bar-container">
+                                                    <div class="progress-bar-fill"
+                                                        [style.width.%]="row[col.column_key]"></div>
+                                                </div>
+                                                <span class="progress-percent">{{ row[col.column_key] }}%</span>
                                             </span>
+
 
                                             <span *ngSwitchCase="'tags'">
                                                 <ng-container *ngFor="let tag of row[col.column_key]">
-                                                    <span class="badge me-1"[ngClass]="getTagClass(tag)">
+                                                    <span class="badge me-1" [ngClass]="getTagClass(tag)">
                                                         {{ tag.value }}
                                                     </span>
                                                 </ng-container>
@@ -263,12 +271,14 @@
                                     </td>
 
                                     <td>
-                                        <lucide-icon class="icon mr-2 cursor-pointer" [img]="Trash2" (click)="openDeleteModal(row)" 
-                                            data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+                                        <lucide-icon class="icon mr-2 cursor-pointer" [img]="Trash2"
+                                            (click)="openDeleteModal(row)" data-bs-toggle="modal"
+                                            data-bs-target="#confirmDeleteModal">
                                         </lucide-icon>
 
-                                        <lucide-icon class="icon cursor-pointer" [img]="Pencil" (click)="openEditModal(row)"
-                                            data-bs-toggle="modal" data-bs-target="#confirmEditModal">
+                                        <lucide-icon class="icon cursor-pointer" [img]="Pencil"
+                                            (click)="openEditModal(row)" data-bs-toggle="modal"
+                                            data-bs-target="#confirmEditModal">
                                         </lucide-icon>
                                     </td>
                                 </tr>
@@ -278,7 +288,7 @@
                 </div>
 
 
-                <div class="card-footer pt-4 pb-4">
+                <div class="custom-card-footer pt-4 pb-4">
                     <div class="pagination-wrapper">
                         <div class="footer-left">
                             <button class="btn">
@@ -350,8 +360,8 @@
 
             <div class="modal-body text-center p-6">
                 <div class="mb-3 lottie-wrapper">
-                    <lottie-player src="assets/edit-lottie.json" background="transparent" speed="1"
-                        class="lottie-class" loop autoplay>
+                    <lottie-player src="assets/edit-lottie.json" background="transparent" speed="1" class="lottie-class"
+                        loop autoplay>
                     </lottie-player>
                 </div>
 
