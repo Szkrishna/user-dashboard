@@ -237,10 +237,19 @@
 
                                     <td *ngFor="let col of gridColumns">
                                         <ng-container [ngSwitch]="col.type">
-                                            <span *ngSwitchCase="'name'">
-                                                {{ row[col.column_key]?.first_name }} {{ row[col.column_key]?.last_name
-                                                }}
+                                            <span *ngSwitchCase="'name'" class="d-flex align-items-center name-cell">
+                                                <div class="initials-circle me-2">
+                                                    {{ row[col.column_key]?.first_name.charAt(0) }}{{
+                                                    row[col.column_key]?.last_name.charAt(0) }}
+                                                </div>
+
+                                                <div class="name-details">
+                                                    <div class="name-text">{{ row[col.column_key]?.first_name }} {{
+                                                        row[col.column_key]?.last_name }}</div>
+                                                    <div class="handle-text">{{ row[col.column_key]?.handle }}</div>
+                                                </div>
                                             </span>
+
 
                                             <span *ngSwitchCase="'status'" class="badge status-badge"
                                                 [ngClass]="getStatusClass(row[col.column_key])">
