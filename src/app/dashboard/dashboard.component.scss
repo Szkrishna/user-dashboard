@@ -485,3 +485,50 @@
   color: #333;
   text-align: right;
 }
+
+
+.status-churned {
+  background-color: #f9f9f8;
+  color: #7e8191;
+  border: 1px solid #7e8191;
+}
+
+.status-customer {
+  background-color: #f1faf4;
+  color: #6db786;
+  border: 1px solid #6db786;
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px; 
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 12px;
+  max-width: fit-content;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.active {
+  color: #28a745; 
+  background-color: rgba(40, 167, 69, 0.1);
+}
+
+.pending {
+  color: #ffc107; 
+  background-color: rgba(255, 193, 7, 0.1);
+}
+
+.inactive {
+  color: #dc3545;
+  background-color: rgba(220, 53, 69, 0.1);
+}

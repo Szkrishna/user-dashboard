@@ -36,12 +36,11 @@
                             <lucide-icon class="icon search-icon" [img]="Search"></lucide-icon>
                         </div>
 
-                        <button class="btn"><lucide-icon class="icon btn-icon"
-                            [img]="Settings2"></lucide-icon>Customize
+                        <button class="btn"><lucide-icon class="icon btn-icon" [img]="Settings2"></lucide-icon>Customize
                         </button>
 
                         <button class="btn"><lucide-icon class="icon btn-icon"
-                            [img]="CloudDownload"></lucide-icon>Export
+                                [img]="CloudDownload"></lucide-icon>Export
                         </button>
                     </div>
                 </div>
@@ -243,9 +242,12 @@
                                                 }}
                                             </span>
 
-                                            <span *ngSwitchCase="'status'" class="badge bg-info">
+                                            <span *ngSwitchCase="'status'" class="badge status-badge"
+                                                [ngClass]="getStatusClass(row[col.column_key])">
+                                                <span class="status-dot"></span>
                                                 {{ row[col.column_key] }}
                                             </span>
+
 
                                             <span *ngSwitchCase="'text'">
                                                 {{ row[col.column_key] }}

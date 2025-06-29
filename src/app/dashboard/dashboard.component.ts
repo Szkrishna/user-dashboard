@@ -281,4 +281,9 @@ export class DashboardComponent implements OnInit {
     return `tag-${text}`;
   }
 
+
+  getStatusClass(status: any): string {
+    const text = status.toLowerCase().replace(/\s+/g, '-');
+    return `status-${text}`;
+  }
 }
