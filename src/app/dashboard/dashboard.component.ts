@@ -14,7 +14,6 @@ import {
   NgApexchartsModule
 } from 'ng-apexcharts';
 
-// Define Apex radial type
 export type RadialChartOptions = {
   series: ApexNonAxisChartSeries;
   chart: ApexChart;
@@ -23,7 +22,19 @@ export type RadialChartOptions = {
   plotOptions: ApexPlotOptions;
   labels: string[];
 };
+import { ApiService } from '../services/api.service';
 
+export interface GridColumn {
+  column_key: string;
+  column_name: string;
+  type: string;
+  align: string;
+}
+
+export interface GridData {
+  id: string;
+  [key: string]: any;
+}
 
 @Component({
   standalone: true,
@@ -50,14 +61,19 @@ export class DashboardComponent implements OnInit {
   readonly ArrowLeft = ArrowLeft;
   readonly ArrowRight = ArrowRight;
   public radialChartOptions: Partial<RadialChartOptions> | null = null;
+  gridColumns: GridColumn[] = [];
+  gridData: GridData[] = [];
+
+  constructor(private dashboardService: ApiService) {}
 
 
   ngOnInit() {
     this.plotHeightChart();
     this.plotRadialChart();
+    this.loadTableData();
   }
 
-  private plotHeightChart() {
+  plotHeightChart() {
     const chartOptions: Highcharts.Options = {
       colors: ['#ebecf0', '#9979e5', '#6343c1'],
       chart: {
@@ -129,59 +145,7 @@ export class DashboardComponent implements OnInit {
     Highcharts.chart('column-container', chartOptions);
   }
 
-
-  // private plotRadialChart() {
-  //   this.radialChartOptions = {
-  //     series: [240],
-  //     chart: {
-  //       type: 'radialBar',
-  //       height: 335,
-  //       id: 'radialChart'
-  //     },
-  //     plotOptions: {
-  //       radialBar: {
-  //         startAngle: -90,
-  //         endAngle: 90,
-  //         hollow: {
-  //           margin: 0,
-  //           size: '70%'
-  //         },
-  //         dataLabels: {
-  //           show: true,
-  //           name: {
-  //             show: false
-  //           },
-  //           value: {
-  //             show: true,
-  //             fontSize: '48px',
-  //             fontWeight: 600,
-  //             offsetY: -10,
-  //             color: '#6343c1',
-  //             formatter: function (val: number) {
-  //               return `${val}`;
-  //             }
-  //           }
-  //         },
-  //         track: {
-  //           margin: 0,
-  //           background: '#f0f0f0',
-  //           strokeWidth: '10%',
-  //         }
-  //       }
-  //     },
-  //     fill: {
-  //       colors: ['#6343c1'],
-  //       type: 'solid',
-  //     },
-  //     stroke: {
-  //       lineCap: 'round'
-  //     },
-  //     labels: ['Vendors monitored']
-  //   };
-  // }
-
-
-  private plotRadialChart() {
+  plotRadialChart() {
     const actual = 240;
     const total = 300;
     const percentage = (actual / total) * 100;
@@ -233,5 +197,16 @@ export class DashboardComponent implements OnInit {
       },
       labels: ['Vendors Monitored']
     };
+  }
+
+
+  async loadTableData() {
+    try {
+      const response = await this.dashboardService.fetchGridData();
+      this.gridColumns = response.grid_columns;
+      this.gridData = response.grid_data;
+    } catch (error) {
+      console.error('Error loading table data:', error);
+    }
   }
 }
