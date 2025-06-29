@@ -248,13 +248,13 @@
 }
 
 .table-card {
-  height: 150vh;
+  height: max-height;
 }
 
 .user-icon {
   width: 40px;
   height: 40px;
-  filter: brightness(0) saturate(100%) invert(43%) sepia(0%) saturate(0%) hue-rotate(166deg) brightness(92%) contrast(86%);
+  filter: brightness(0) saturate(100%) invert(17%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 }
 
 .box2 {
@@ -277,7 +277,7 @@
   height: 20px;
   padding: 3px;
   stroke: #ffffff;
-  background-color: #666;
+  background-color: #888;
   border-radius: 50%;
 }
 
@@ -290,8 +290,101 @@
 .table-badge {
   color: #7957d0;
   padding: 4px 6px;
-  border: 0.5px solid #7957d0;
+  border: 0.5px solid #bfaeea;
   border-radius: 16px;
   background-color: #ddd4f5;
   margin: 12px 0px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.table-card {
+  background-color: #fff;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.table thead {
+  background-color: #f8f9fa;
+}
+
+.table th,
+.table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+  white-space: nowrap;
+}
+
+.table th {
+  font-weight: 600;
+  color: #70727b;
+}
+
+.table td a {
+  text-decoration: none;
+  color: #5c60f5;
+  font-weight: 600;
+}
+
+.table td a:hover {
+  text-decoration: underline;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+}
+
+.form-check-input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.card-footer .pagination-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.pagination-wrapper .footer-left,
+.pagination-wrapper .footer-middle,
+.pagination-wrapper .footer-right {
+  display: flex;
+  align-items: center;
+}
+
+.pagination-wrapper .footer-middle {
+  gap: 8px;
+}
+
+.pagination-wrapper .page,
+.pagination-wrapper .dots {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+}
+
+.pagination-wrapper .page.active {
+  background-color: #efefef;
+  color: #333;
+  border-color: #ddd;
+}
+
+.pagination-wrapper .btn {
+  color: #666;
 }
