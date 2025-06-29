@@ -9,10 +9,10 @@
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  padding: 12px;
+  padding: 20px;
   gap: 8px;
   height: auto;
-  width: auto;
+  width: 60px;
 }
 
 .img-icon {
@@ -253,21 +253,22 @@
 
 .user-icon {
   width: 40px;
-   height: 40px;
+  height: 40px;
+  filter: brightness(0) saturate(100%) invert(43%) sepia(0%) saturate(0%) hue-rotate(166deg) brightness(92%) contrast(86%);
 }
 
 .box2 {
   padding: 4px;
   border-radius: 50%;
-  background-color: #010101;
+  background-color: #202020;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 20px;
   height: 20px;
   position: relative;
-  top: 8px;
-  right: 8px;
+  top: -24px;
+  right: -24px;
 }
 
 ::ng-deep lucide-icon.box-icon2 svg {
@@ -276,6 +277,8 @@
   height: 20px;
   padding: 3px;
   stroke: #ffffff;
+  background-color: #666;
+  border-radius: 50%;
 }
 
 .table-left {
