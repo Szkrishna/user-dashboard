@@ -286,4 +286,15 @@ export class DashboardComponent implements OnInit {
     const text = status.toLowerCase().replace(/\s+/g, '-');
     return `status-${text}`;
   }
+
+
+  getUserInitials(): string {
+    const user = this.gridData?.[0];
+    const key = this.gridColumns?.[0]?.column_key;
+
+    const fullName = user?.[key];
+    const first = fullName?.first_name?.charAt(0) || '';
+    const last = fullName?.last_name?.charAt(0) || '';
+    return `${first}${last}`;
+  }
 }

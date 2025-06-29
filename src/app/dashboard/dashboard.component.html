@@ -159,12 +159,8 @@
             </span>
 
             <span class="user">
-                <!-- <img class="user-icon" src="assets/profile-user.png" alt="user"> -->
-                <div>
-                    <div class="initials-circle">
-                        {{ gridData[0][gridColumns[0].column_key]?.first_name.charAt(0) }}
-                        {{ gridData[0][gridColumns[0].column_key]?.last_name.charAt(0) }}
-                    </div>
+                <div class="initials-circle">
+                    {{ getUserInitials() }}
                 </div>
 
                 <span class="box2">
@@ -301,7 +297,6 @@
                     </div>
                 </div>
 
-
                 <div class="custom-card-footer pt-4 pb-4">
                     <div class="pagination-wrapper">
                         <div class="footer-left">
@@ -363,6 +358,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Edit confirmation modal -->
 <div class="modal fade" id="confirmEditModal" tabindex="-1" aria-labelledby="confirmEditModalLabel" aria-hidden="true">
