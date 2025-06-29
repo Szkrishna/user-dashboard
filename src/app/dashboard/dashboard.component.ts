@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import {
   LucideAngularModule, House, ChartColumnIncreasing, Layers, CopyCheck, ChartPie, Users,
   Search, Box, Settings2, CloudDownload, EllipsisVertical, Zap, TrendingUp, Cog, Settings, ArrowLeft, ArrowRight
@@ -38,7 +39,7 @@ export interface GridData {
 
 @Component({
   standalone: true,
-  imports: [CommonModule, LucideAngularModule, NgApexchartsModule],
+  imports: [CommonModule, FormsModule, LucideAngularModule, NgApexchartsModule],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
@@ -61,10 +62,13 @@ export class DashboardComponent implements OnInit {
   readonly ArrowLeft = ArrowLeft;
   readonly ArrowRight = ArrowRight;
   public radialChartOptions: Partial<RadialChartOptions> | null = null;
-  gridColumns: GridColumn[] = [];
-  gridData: GridData[] = [];
+  public gridColumns: GridColumn[] = [];
+  public gridData: GridData[] = [];
+  public selectedRows: Set<string> = new Set();
+  public isAllSelected = false;
 
-  constructor(private dashboardService: ApiService) {}
+
+  constructor(private dashboardService: ApiService) { }
 
 
   ngOnInit() {
@@ -209,4 +213,23 @@ export class DashboardComponent implements OnInit {
       console.error('Error loading table data:', error);
     }
   }
+
+  toggleSelectAll() {
+    if (this.isAllSelected) {
+      this.gridData.forEach(row => this.selectedRows.add(row.id));
+    } else {
+      this.selectedRows.clear();
+    }
+  }
+
+  toggleRowSelection(rowId: string) {
+    if (this.selectedRows.has(rowId)) {
+      this.selectedRows.delete(rowId);
+    } else {
+      this.selectedRows.add(rowId);
+    }
+
+    this.isAllSelected = this.selectedRows.size === this.gridData.length;
+  }
+
 }
