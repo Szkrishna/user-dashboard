@@ -159,7 +159,13 @@
             </span>
 
             <span class="user">
-                <img class="user-icon" src="assets/profile-user.png" alt="user">
+                <!-- <img class="user-icon" src="assets/profile-user.png" alt="user"> -->
+                <div>
+                    <div class="initials-circle">
+                        {{ gridData[0][gridColumns[0].column_key]?.first_name.charAt(0) }}
+                        {{ gridData[0][gridColumns[0].column_key]?.last_name.charAt(0) }}
+                    </div>
+                </div>
 
                 <span class="box2">
                     <lucide-icon class="box-icon2" [img]="Box"></lucide-icon>
@@ -250,13 +256,11 @@
                                                 </div>
                                             </span>
 
-
                                             <span *ngSwitchCase="'status'" class="badge status-badge"
                                                 [ngClass]="getStatusClass(row[col.column_key])">
                                                 <span class="status-dot"></span>
                                                 {{ row[col.column_key] }}
                                             </span>
-
 
                                             <span *ngSwitchCase="'text'">
                                                 {{ row[col.column_key] }}
@@ -269,7 +273,6 @@
                                                 </div>
                                                 <span class="progress-percent">{{ row[col.column_key] }}%</span>
                                             </span>
-
 
                                             <span *ngSwitchCase="'tags'">
                                                 <ng-container *ngFor="let tag of row[col.column_key]">
@@ -349,7 +352,8 @@
                     </lottie-player>
                 </div>
 
-                Are you sure you want to delete <strong>{{ selectedUser?.name?.handle }}</strong>?
+                Are you sure you want to delete <strong>{{ selectedUser?.name?.first_name }} {{
+                    selectedUser?.name?.last_name }}</strong>?
             </div>
 
             <div class="modal-footer">
@@ -376,7 +380,8 @@
                     </lottie-player>
                 </div>
 
-                Are you sure you want to Edit <strong>{{ selectedUser?.name?.handle }}</strong>?
+                Are you sure you want to Edit <strong>{{ selectedUser?.name?.first_name }} {{
+                    selectedUser?.name?.last_name }}</strong>?
             </div>
 
             <div class="modal-footer">
