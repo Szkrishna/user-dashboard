@@ -255,6 +255,7 @@
   width: 40px;
   height: 40px;
   filter: brightness(0) saturate(100%) invert(17%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+  margin-top: 8px;
 }
 
 .box2 {
@@ -404,4 +405,14 @@
 
 .license {
   font-size: 20px !important;
+}
+
+.modal-footer {
+  gap: 8px;
+}
+
+.lottie-class {
+  width: 120px; 
+  height: 120px; 
+  margin: 0 auto;
 }

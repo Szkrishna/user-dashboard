@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
   LucideAngularModule, House, ChartColumnIncreasing, Layers, CopyCheck, ChartPie, Users,
-  Search, Box, Settings2, CloudDownload, EllipsisVertical, Zap, TrendingUp, Cog, Settings, ArrowLeft, ArrowRight, ArrowDown, CircleQuestionMark
+  Search, Box, Settings2, CloudDownload, EllipsisVertical, Zap, TrendingUp, Cog, Settings, ArrowLeft, ArrowRight, ArrowDown, CircleQuestionMark, Trash2, Pencil
 } from 'lucide-angular';
 import * as Highcharts from 'highcharts';
 import {
@@ -14,6 +14,7 @@ import {
   ApexPlotOptions,
   NgApexchartsModule
 } from 'ng-apexcharts';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 export type RadialChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -37,11 +38,14 @@ export interface GridData {
   [key: string]: any;
 }
 
+declare var bootstrap: any;
+
 @Component({
   standalone: true,
   imports: [CommonModule, FormsModule, LucideAngularModule, NgApexchartsModule],
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class DashboardComponent implements OnInit {
   readonly House = House;
@@ -63,15 +67,17 @@ export class DashboardComponent implements OnInit {
   readonly ArrowRight = ArrowRight;
   readonly ArrowDown = ArrowDown;
   readonly CircleQuestionMark = CircleQuestionMark;
+  readonly Trash2 = Trash2;
+  readonly Pencil = Pencil;
   public radialChartOptions: Partial<RadialChartOptions> | null = null;
   public gridColumns: GridColumn[] = [];
   public gridData: GridData[] = [];
   public selectedRows: Set<string> = new Set();
   public isAllSelected = false;
-
+  public selectedUser: any = null;
+  public modalRef: any;
 
   constructor(private dashboardService: ApiService) { }
-
 
   ngOnInit() {
     this.plotHeightChart();
@@ -234,4 +240,39 @@ export class DashboardComponent implements OnInit {
     this.isAllSelected = this.selectedRows.size === this.gridData.length;
   }
 
+  openDeleteModal(user: any): void {
+    this.selectedUser = user;
+    const modalEl = document.getElementById('confirmDeleteModal');
+    if (modalEl) {
+      this.modalRef = new bootstrap.Modal(modalEl, {
+        keyboard: false,
+      });
+      this.modalRef.show();
+    }
+  }
+
+  openEditModal(user: any): void {
+    this.selectedUser = user;
+    const modalEl = document.getElementById('confirmEditModal');
+    if (modalEl) {
+      this.modalRef = new bootstrap.Modal(modalEl, {
+        keyboard: false,
+      });
+      this.modalRef.show();
+    }
+  }
+
+  closeModal(): void {
+    this.modalRef?.hide();
+    document.querySelector('.modal-backdrop')?.remove();
+    document.body.classList.remove('modal-open');
+  }
+
+  confirmDelete() {
+    if (!this.selectedUser) return;
+    const id = this.selectedUser.id;
+    this.gridData = this.gridData.filter(item => item.id !== id);
+    this.selectedUser = null;
+    this.closeModal();
+  }
 }
