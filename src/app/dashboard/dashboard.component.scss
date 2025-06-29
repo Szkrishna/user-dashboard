@@ -325,7 +325,7 @@
 }
 
 .table th {
-  font-weight: 600;
+  font-weight: 500;
   color: #70727b;
 }
 
@@ -388,4 +388,20 @@
 
 .pagination-wrapper .btn {
   color: #666;
+}
+
+.large-font {
+  font-size: 20px;
+}
+
+::ng-deep lucide-icon svg.table-header-icon {
+  width: 28px;
+  height: 28px;
+  padding: 4px 12px 8px 0;
+  stroke: #70727b;
+}
+
+
+.license {
+  font-size: 20px !important;
 }

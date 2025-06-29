@@ -37,9 +37,9 @@
                         </div>
 
                         <button class="btn"><lucide-icon class="icon btn-icon"
-                                [img]="Settings2"></lucide-icon>Customize</button>
+                            [img]="Settings2"></lucide-icon>Customize</button>
                         <button class="btn"><lucide-icon class="icon btn-icon"
-                                [img]="CloudDownload"></lucide-icon>Export</button>
+                            [img]="CloudDownload"></lucide-icon>Export</button>
                     </div>
                 </div>
             </div>
@@ -182,101 +182,6 @@
                     </div>
                 </div>
 
-                <!-- <div class="card-body p-0">
-                    <div class="table-responsive table-card">
-                        <table class="table table-nowrap mb-0">
-                            <thead class="table-light">
-                                <tr>
-                                    <th scope="col">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="cardtableCheck">
-                                            <label class="form-check-label" for="cardtableCheck"></label>
-                                        </div>
-                                    </th>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Total</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="cardtableCheck01">
-                                            <label class="form-check-label" for="cardtableCheck01"></label>
-                                        </div>
-                                    </td>
-                                    <td><a href="#" class="fw-semibold">#VL2110</a></td>
-                                    <td>William Elmore</td>
-                                    <td>07 Oct, 2021</td>
-                                    <td>$24.05</td>
-                                    <td><span class="badge bg-success">Paid</span></td>
-                                    <td>
-                                        <button type="button" class="btn btn-sm btn-light">Details</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="cardtableCheck02">
-                                            <label class="form-check-label" for="cardtableCheck02"></label>
-                                        </div>
-                                    </td>
-                                    <td><a href="#" class="fw-semibold">#VL2109</a></td>
-                                    <td>Georgie Winters</td>
-                                    <td>07 Oct, 2021</td>
-                                    <td>$26.15</td>
-                                    <td><span class="badge bg-success">Paid</span></td>
-                                    <td>
-                                        <button type="button" class="btn btn-sm btn-light">Details</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="cardtableCheck03">
-                                            <label class="form-check-label" for="cardtableCheck03"></label>
-                                        </div>
-                                    </td>
-                                    <td><a href="#" class="fw-semibold">#VL2108</a></td>
-                                    <td>Whitney Meier</td>
-                                    <td>06 Oct, 2021</td>
-                                    <td>$21.25</td>
-                                    <td><span class="badge bg-danger">Refund</span></td>
-                                    <td>
-                                        <button type="button" class="btn btn-sm btn-light">Details</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="cardtableCheck04">
-                                            <label class="form-check-label" for="cardtableCheck04"></label>
-                                        </div>
-                                    </td>
-                                    <td><a href="#" class="fw-semibold">#VL2107</a></td>
-                                    <td>Justin Maier</td>
-                                    <td>05 Oct, 2021</td>
-                                    <td>$25.03</td>
-                                    <td><span class="badge bg-success">Paid</span></td>
-                                    <td>
-                                        <button type="button" class="btn btn-sm btn-light">Details</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div> -->
-
-
                 <div class="card-body p-0">
                     <div class="table-responsive table-card">
                         <table class="table table-nowrap mb-0 custom-table">
@@ -297,7 +202,30 @@
                                         </div>
                                     </th>
 
-                                    <th scope="col" *ngFor="let col of gridColumns">{{ col.column_name }}</th>
+                                    <!-- <th scope="col" *ngFor="let col of gridColumns">{{ col.column_name }}</th> -->
+
+                                    <th scope="col" *ngFor="let col of gridColumns">
+                                        <ng-container [ngSwitch]="col.column_name">
+                                            <span *ngSwitchCase="'Status'">
+                                                {{ col.column_name }}
+                                                <lucide-icon class="icon table-header-icon" [img]="ArrowDown"></lucide-icon>
+                                            </span>
+
+                                            <span *ngSwitchCase="'Role'">
+                                                {{ col.column_name }}
+                                                <lucide-icon class="icon table-header-icon" [img]="CircleQuestionMark"></lucide-icon>
+                                            </span>
+                                            
+                                            <span class="license" *ngSwitchCase="'License Use'">
+                                                {{ col.column_name }}
+                                            </span>
+                                            
+                                            <span *ngSwitchDefault>
+                                                {{ col.column_name }}
+                                            </span>
+
+                                        </ng-container>
+                                    </th>
 
                                     <th>Action</th>
                                 </tr>
@@ -316,8 +244,7 @@
                                     <td *ngFor="let col of gridColumns">
                                         <ng-container [ngSwitch]="col.type">
                                             <span *ngSwitchCase="'name'">
-                                                {{ row[col.column_key]?.first_name }} {{ row[col.column_key]?.last_name
-                                                }}
+                                                {{ row[col.column_key]?.first_name }} {{ row[col.column_key]?.last_name }}
                                             </span>
 
                                             <span *ngSwitchCase="'status'" class="badge bg-info">
